@@ -35,8 +35,13 @@ COPY . .
 # Instalar dependencias de PHP
 RUN composer install --no-interaction --optimize-autoloader --no-dev
 
+# Asegurar que las carpetas existan antes de los permisos
+RUN mkdir -p /var/www/html/storage /var/www/html/bootstrap/cache
+RUN mkdir -p /var/www/html/storage/framework/sessions /var/www/html/storage/framework/views /var/www/html/storage/framework/cache /var/www/html/storage/logs
+
 # Permisos para Laravel
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
+RUN chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
 
 # Puerto de salida
 EXPOSE 80
