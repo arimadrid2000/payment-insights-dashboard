@@ -43,8 +43,11 @@ RUN mkdir -p /var/www/html/storage/framework/sessions /var/www/html/storage/fram
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 RUN chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
 
+# Dar permisos de ejecución al script de deploy
+RUN chmod +x /var/www/html/deploy.sh
+
 # Puerto de salida
 EXPOSE 80
 
-# Comando para iniciar
-CMD ["apache2-foreground"]
+# Usar el script como comando de inicio
+CMD ["/var/www/html/deploy.sh"]
