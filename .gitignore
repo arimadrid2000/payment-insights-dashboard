@@ -21,9 +21,5 @@ composer.lock
 package-lock.json
 public/hot
 public/storage
-storage/*.key
-/storage/framework/cache/data/*
-/storage/framework/sessions/*
-/storage/framework/views/*
 /storage/logs/*
 .phpunit.result.cache
